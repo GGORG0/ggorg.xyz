@@ -1,0 +1,286 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+  background-color: #1d1e22;
+  color: #fff;
+  margin: 0;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+button {
+  background-color: #616161;
+  color: #fff;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+
+  font-size: 1.2rem;
+
+  transition: background-color 0.5s;
+}
+
+button:hover {
+  background-color: #757575;
+}
+
+/* TITLE */
+
+#container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+}
+
+#title {
+  position: relative;
+
+  padding: 0.2em;
+  margin-bottom: 0.3em;
+
+  font-size: 3rem;
+  font-weight: 600;
+
+  transition: all 1s;
+
+  cursor: default;
+}
+
+@media (min-width: 35rem) {
+  #title {
+    font-size: 5rem;
+  }
+}
+
+#title:hover {
+  padding: 0.35em;
+
+  font-size: 5.1rem;
+  letter-spacing: 0.1em;
+
+  color: #b3e5fc;
+}
+
+#title:before,
+#title:after {
+  content: "";
+
+  position: absolute;
+
+  width: 0.2em;
+  height: 0.2em;
+
+  border-color: #fff;
+  border-width: 0.1em;
+
+  transition: width 1s, height 1s, border-color 1s;
+}
+
+#title:hover:before,
+#title:hover:after {
+  width: 0.3em;
+  height: 0.3em;
+
+  border-color: #29b6f6;
+}
+
+#title:before {
+  top: 10%;
+  left: -1rem;
+
+  border-top-style: solid;
+  border-left-style: solid;
+}
+
+#title:after {
+  bottom: 10%;
+  right: -1rem;
+
+  border-right-style: solid;
+  border-bottom-style: solid;
+}
+
+/* SIDEBARS */
+.sidebar {
+  position: absolute;
+  top: 0;
+
+  width: fit-content;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  z-index: 1;
+
+  translate: var(--_translate, 0%) 0;
+  transition: translate 0.5s;
+}
+
+@media not all and (hover: none) {
+  .sidebar:hover {
+    translate: 0 0;
+  }
+}
+
+.sidebar:focus-within,
+.sidebar.open {
+  translate: 0 0;
+}
+
+.sidebar .close-sidebar-button {
+  position: absolute;
+  top: 0;
+
+  aspect-ratio: 1;
+
+  display: none;
+}
+
+.sidebar.open .close-sidebar-button {
+  display: block;
+}
+
+.sidebar ul {
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.2em;
+
+  border-radius: 0.5em;
+
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.big-screen ul {
+  gap: 1em;
+}
+
+.sidebar li {
+  list-style-type: none;
+  width: 100%;
+}
+
+.sidebar .sidebar-item {
+  color: #fff;
+  font-size: 1.2rem;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+
+  background-color: #616161;
+  padding: 0.25em 0.5em;
+
+  transition: background-color 0.5s;
+}
+
+.sidebar a {
+  text-decoration: none;
+}
+
+.sidebar.big-screen .sidebar-item {
+  font-size: 1.3rem;
+  padding: 0.5em 1em;
+}
+
+.sidebar .sidebar-item:hover {
+  background-color: #757575;
+}
+
+.sidebar .sidebar-item > i {
+  font-size: 1.4rem;
+  width: 1em;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar.big-screen .sidebar-item > i {
+  font-size: 2.2rem;
+}
+
+/* RIGHT SIDEBAR - LINKS */
+#right-sidebar {
+  right: 0;
+}
+
+#right-sidebar .close-sidebar-button {
+  left: 0;
+}
+
+#right-sidebar .sidebar-item {
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+}
+
+#right-sidebar .sidebar-item > i {
+  border-right: 1px solid #9e9e9e;
+  padding-right: 0.5em;
+}
+
+/* LEFT SIDEBAR - ABOUT */
+#left-sidebar {
+  left: 0;
+}
+
+#left-sidebar .close-sidebar-button {
+  right: 0;
+}
+
+#left-sidebar .sidebar-item {
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+}
+
+#left-sidebar .sidebar-item > i {
+  border-left: 1px solid #9e9e9e;
+  padding-left: 0.5em;
+}
+
+#left-sidebar .sidebar-item > span > span {
+  display: inline;
+}
+
+#left-sidebar .sidebar-item > span > span.bold {
+  margin-right: 0.5ch;
+}
+
+/* OPEN SIDEBAR BUTTONS - FOR MOBILE DEVICES */
+#open-sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
